@@ -1,0 +1,23 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>F1 Race Tracker</title>
+</head>
+<body>
+<h1>F1 Race Tracker</h1>
+<ul>
+{% for driver in drivers %}
+<li><a href="{{ url_for('driver', driver_id=driver.id) }}">{{ driver.name }}</a></li>
+{% endfor %}
+</ul>
+<ul>
+{% for team in teams %}
+<li><a href="{{ url_for('team', team_id=team.id) }}">{{ team.name }}</a></li>
+{% endfor %}
+</ul>
+</body>
+</html>
+
+
