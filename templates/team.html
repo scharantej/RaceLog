@@ -1,0 +1,43 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{ team.name }}</title>
+</head>
+<body>
+<h1>{{ team.name }}</h1>
+<p>Constructor: {{ team.constructor }}</p>
+<p>History: {{ team.history }}</p>
+<table border="1">
+<thead>
+<tr>
+<th>Driver</th>
+<th>Driver Standings</th>
+<th>Wins</th>
+</tr>
+</thead>
+<tbody>
+{% for driver in team.drivers %}
+<tr>
+<td>{{ driver.name }}</td>
+<td>{{ driver.standings }}</td>
+<td>{{ driver.wins }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+<form action="{{ url_for('add_driver') }}" method="POST">
+<label for="driver_name">Driver Name:</label>
+<input type="text" id="driver_name" name="driver_name">
+<input type="hidden" name="team_id" value="{{ team.id }}">
+<input type="submit" value="Add Driver">
+</form>
+<form action="{{ url_for('delete_driver', driver_id=driver.id, team_id=team.id) }}" method="POST">
+<label for="driver_name">Driver Name:</label>
+<input type="text" id="driver_name" name="driver_name" value="{{ driver.name }}" readonly>
+<input type="submit" value="Delete Driver">
+</form>
+</body>
+</html>
+
